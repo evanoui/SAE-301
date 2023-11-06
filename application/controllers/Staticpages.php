@@ -20,3 +20,11 @@ class Staticpages extends CI_Controller {
 }
 ?>
 
+
+
+
+
+
+
+
+
