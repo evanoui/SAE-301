@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -20,5 +21,7 @@
    <button type="submit">Valider</button>
 </form>
 
-
-
+<?php require_once("../config/database.php"); ?>
+<?php foreach($nom as $utilisateur):?>
+<?php echo $utilisateur['nom']; ?>
+<?php endforeach ?>

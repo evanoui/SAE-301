@@ -1,6 +1,6 @@
 <h2>Créer un nouvel utilisateur</h2>
 <?php echo validation_errors(); ?>
-
+<?php $this->load->database(); ?>
 <?php echo form_open('users/create'); ?>
     <label for="login">Login :</label>
     <input type="text" name="login" required><br>
@@ -25,11 +25,3 @@
 
     <button type="submit">Créer l'utilisateur</button>
 </form>
-
-<?php
-if ($this->db->db_debug) {
-    echo "Connexion à la base de données établie avec succès.";
-} else {
-    echo "Échec de la connexion à la base de données.";
-}
-?>
