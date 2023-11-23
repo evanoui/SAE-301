@@ -1,4 +1,6 @@
 <?php
+$this->load->database(); 
+
 class Internships_model extends CI_Model
 {
     public function __construct()

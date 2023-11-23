@@ -1,27 +1,39 @@
-<h2>Créer un nouvel utilisateur</h2>
-<?php echo validation_errors(); ?>
-<?php $this->load->database(); ?>
-<?php echo form_open('users/create'); ?>
-    <label for="login">Login :</label>
-    <input type="text" name="login" required><br>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter un Utilisateur</title>
+</head>
+<body>
+    <h2>Ajouter un Utilisateur</h2>
+    <?php echo form_open('user/add'); ?>
+        <label for="login">Login :</label>
+        <input type="text" name="login" required><br>
 
-    <label for="password">Mot de passe :</label>
-    <input type="password" name="password" required><br>
+        <label for="password">Mot de passe :</label>
+        <input type="password" name="password" required><br>
 
-    <label for="nom">Nom :</label>
-    <input type="text" name="nom" required><br>
+        <label for="nom">Nom :</label>
+        <input type="text" name="nom" required><br>
 
-    <label for="prenom">Prénom :</label>
-    <input type="text" name="prenom" required><br>
+        <label for="prenom">Prénom :</label>
+        <input type="text" name="prenom" required><br>
 
-    <label for="ddn">Date de naissance :</label>
-    <input type="date" name="ddn" required><br>
+        <label for="ddn">Date de Naissance :</label>
+        <input type="date" name="ddn" required><br>
 
-    <label for="email">Email :</label>
-    <input type="email" name="email" required><br>
+        <label for="email">Email :</label>
+        <input type="email" name="email" required><br>
 
-    <label for="type_utilisateur">Type d'utilisateur :</label>
-    <input type="text" name="type_utilisateur" required><br>
+        <label for="type_utilisateur">Type d'Utilisateur :</label>
+        <select name="type_utilisateur" required>
+            <option value="client">Client</option>
+            <option value="agent">Agent</option>
+            <option value="admin">Admin</option>
+        </select><br>
 
-    <button type="submit">Créer l'utilisateur</button>
-</form>
+        <input type="submit" value="Ajouter">
+    <?php echo form_close(); ?>
+</body>
+</html>
