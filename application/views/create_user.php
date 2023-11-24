@@ -7,7 +7,7 @@
 </head>
 <body>
     <h2>Ajouter un Utilisateur</h2>
-    <?php echo form_open('user/add'); ?>
+    <?php echo form_open('users/add'); ?>
         <label for="login">Login :</label>
         <input type="text" name="login" required><br>
 
