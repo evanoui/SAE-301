@@ -6,32 +6,23 @@ class Users extends CI_Controller {
     public function add_user() {
         $this->load->database();
         $this->load->library('form_validation');
-        $this->load->model('user_model'); // Charger le modèle User_model
+        $this->load->model('user_model'); // Charger le modèle user_model en minuscules
 
         // Définir les règles de validation
         $this->form_validation->set_rules('login', 'Login', 'required');
-        // ... (ajoutez d'autres règles de validation ici) ...
-
+        $this->form_validation->set_rules('password', 'Mot de passe', 'required');
+        // Ajoutez d'autres règles de validation au besoin
+        
         if ($this->form_validation->run() == FALSE) {
+            // Affichez des messages d'erreur si la validation échoue
             $this->load->view('create_user');
         } else {
-            $data = array(
-                'login' => $this->input->post('login'),
-                // ... (ajoutez d'autres champs ici) ...
-            );
-
-            // Utiliser le modèle pour ajouter l'utilisateur à la base de données
-            $result = $this->user_model->add_user($data);
-
-            if ($result) {
-                // Rediriger vers une page de confirmation ou une autre page
-                redirect('users/add_success');
-            } else {
-                // Gérer l'échec de l'insertion
-                echo 'Échec de l\'ajout de l\'utilisateur.';
-            }
+            // Traitement du formulaire réussi, ajoutez les données à la base de données
+            $this->user_model->add_user(); // Utilisez user_model avec une minuscule
+            // Redirigez ou affichez une vue de succès
+            redirect('users/add_sucess.php');
         }
-    }
 
-    // ... (autres méthodes du contrôleur) ...
+        // ... (autres méthodes du contrôleur) ...
+    }
 }
