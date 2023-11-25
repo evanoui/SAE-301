@@ -21,5 +21,16 @@ class User_model extends CI_Model {
 
         $this->db->insert('utilisateur', $data);
     }
+
+    public function get_users() {
+        // Récupérer la liste des utilisateurs depuis la base de données
+        $query = $this->db->get('utilisateur');
+        return $query->result();
+    }
+
+    public function delete_user($user_id) {
+        $this->db->where('id', $user_id);
+        $this->db->delete('utilisateur');
+    }
 }
 ?>

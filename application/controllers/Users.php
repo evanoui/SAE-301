@@ -36,5 +36,14 @@ class Users extends CI_Controller {
         // Afficher une page de succès après l'ajout d'un utilisateur
         $this->load->view('add_success');
     }
+
+    public function user_list() {
+        $data['users'] = $this->User_model->get_users(); // Assurez-vous que vous avez une méthode get_users() dans votre modèle
+        $this->load->view('user_list', $data);
+    }
+    public function delete($user_id) {
+        $this->User_model->delete_user($user_id);
+        redirect('users/user_list'); 
+    }
 }
 ?>
