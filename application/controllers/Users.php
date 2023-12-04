@@ -45,5 +45,36 @@ class Users extends CI_Controller {
         $this->User_model->delete_user($user_id);
         redirect('users/user_list'); 
     }
+
+    public function login() {
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules('login', 'Nom d\'utilisateur', 'required');
+        $this->form_validation->set_rules('password', 'Mot de passe', 'required');
+    
+        if ($this->form_validation->run() === FALSE) {
+            // Afficher la vue de connexion avec les erreurs de validation
+            $this->load->view('login_view');
+        } else {
+            // Vérifier les informations de connexion
+            $login = $this->input->post('login');
+            $password = $this->input->post('password');
+            $user = $this->User_model->login($login, $password);
+    
+            if ($user) {
+                // Connexion réussie, rediriger vers la page d'accueil ou une autre page
+                redirect('produits/list');
+            } else {
+                // Informations de connexion incorrectes, afficher la vue de connexion avec un message d'erreur
+                $data['error_message'] = 'Nom d\'utilisateur ou mot de passe incorrect';
+                $this->load->view('login_view', $data);
+            }
+        }
+    }
+
+    public function logout() {
+        $this->session->sess_destroy();
+        redirect('users/login');
+    }
+    
 }
 ?>

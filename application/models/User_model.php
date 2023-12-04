@@ -32,5 +32,12 @@ class User_model extends CI_Model {
         $this->db->where('id', $user_id);
         $this->db->delete('utilisateur');
     }
+
+    public function login($login, $password) {
+        $hashed_password = md5($password); // Note: utiliser des méthodes de hachage sécurisées en production
+        $query = $this->db->get_where('utilisateur', array('login' => $login, 'password' => $hashed_password));
+    
+        return $query->row();
+    }
 }
 ?>
