@@ -11,7 +11,7 @@ class User_model extends CI_Model {
     public function add_user() {
         $data = array(
             'login' => $this->input->post('login'),
-            'password' => md5($this->input->post('password')), // Note: utiliser des méthodes de hachage sécurisées en production
+            'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT), // Note: utiliser des méthodes de hachage sécurisées en production
             'nom' => $this->input->post('nom'),
             'prenom' => $this->input->post('prenom'),
             'ddn' => $this->input->post('ddn'),
@@ -34,10 +34,14 @@ class User_model extends CI_Model {
     }
 
     public function login($login, $password) {
-        $hashed_password = md5($password); // Note: utiliser des méthodes de hachage sécurisées en production
-        $query = $this->db->get_where('utilisateur', array('login' => $login, 'password' => $hashed_password));
-    
-        return $query->row();
+        $query = $this->db->get_where('utilisateur', array('login' => $login));
+        $user = $query->row();
+
+        if ($user && password_verify($password, $user->password)) {
+            return $user;
+        }
+
+        return null;
     }
 }
 ?>

@@ -7,6 +7,7 @@ class Users extends CI_Controller {
         parent::__construct();
         $this->load->model('User_model');
         $this->load->helper('url');
+        $this->load->library('session');
     }
 
     public function create() {
@@ -47,28 +48,50 @@ class Users extends CI_Controller {
     }
 
     public function login() {
+        // Charger la bibliothèque de formulaire CodeIgniter si ce n'est pas déjà fait
+        
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('login', 'Nom d\'utilisateur', 'required');
+    
+        // Définir les règles de validation pour le formulaire
+        $this->form_validation->set_rules('login', 'Nom d\'utilisateur', 'required|trim');
         $this->form_validation->set_rules('password', 'Mot de passe', 'required');
     
+        // Initialiser la variable $user_is_logged_in
+        $data['user_is_logged_in'] = $this->session->userdata('user_id') !== null;
+    
         if ($this->form_validation->run() === FALSE) {
-            // Afficher la vue de connexion avec les erreurs de validation
-            $this->load->view('login_view');
+            // Si la validation échoue, réafficher le formulaire avec les erreurs
+            $this->load->view('login_view', $data);
         } else {
-            // Vérifier les informations de connexion
+            // Si la validation réussit, vérifier les informations de connexion
             $login = $this->input->post('login');
             $password = $this->input->post('password');
+            echo "Login: $login, Password: $password"; 
             $user = $this->User_model->login($login, $password);
     
             if ($user) {
-                // Connexion réussie, rediriger vers la page d'accueil ou une autre page
-                redirect('produits/list');
+                // Utilisateur connecté avec succès
+                // Vous pouvez stocker des informations de session ici si nécessaire
+                $this->session->set_userdata('user_id', $user->id);
+                redirect('dashboard'); // Rediriger vers la page d'accueil ou le tableau de bord après la connexion
             } else {
-                // Informations de connexion incorrectes, afficher la vue de connexion avec un message d'erreur
-                $data['error_message'] = 'Nom d\'utilisateur ou mot de passe incorrect';
+                // Échec de la connexion, afficher un message d'erreur
+                $data['error_message'] = 'Nom d\'utilisateur ou mot de passe incorrect.';
                 $this->load->view('login_view', $data);
             }
         }
+
+        
+    }
+    
+    public function dashboard() {
+        // Vérifier si l'utilisateur est connecté
+        if (!$this->session->userdata('user_id')) {
+            redirect('users/login');
+        }
+    
+        // Charger la vue du tableau de bord
+        $this->load->view('dashboard_view');
     }
 
     public function logout() {
@@ -77,4 +100,6 @@ class Users extends CI_Controller {
     }
     
 }
+
+
 ?>
