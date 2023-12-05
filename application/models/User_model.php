@@ -35,13 +35,20 @@ class User_model extends CI_Model {
 
     public function login($login, $password) {
         $query = $this->db->get_where('utilisateur', array('login' => $login));
-        $user = $query->row();
-
-        if ($user && password_verify($password, $user->password)) {
-            return $user;
+    
+        // Vérifier si la requête a réussi
+        if ($query) {
+            $user = $query->row();
+    
+            // Vérifier si l'utilisateur existe et si le mot de passe est correct
+            if ($user && password_verify($password, $user->password)) {
+                return $user;
+            }
         }
-
+    
+        // Si quelque chose ne va pas (utilisateur non trouvé, mot de passe incorrect, erreur de base de données, etc.)
         return null;
     }
+    
 }
 ?>

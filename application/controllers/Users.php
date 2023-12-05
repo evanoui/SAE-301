@@ -46,16 +46,12 @@ class Users extends CI_Controller {
         $this->User_model->delete_user($user_id);
         redirect('users/user_list'); 
     }
-
     public function login() {
-        // Charger la bibliothèque de formulaire CodeIgniter si ce n'est pas déjà fait
-        
         $this->load->library('form_validation');
-    
-        // Définir les règles de validation pour le formulaire
+        
         $this->form_validation->set_rules('login', 'Nom d\'utilisateur', 'required|trim');
         $this->form_validation->set_rules('password', 'Mot de passe', 'required');
-    
+        
         // Initialiser la variable $user_is_logged_in
         $data['user_is_logged_in'] = $this->session->userdata('user_id') !== null;
     
@@ -66,23 +62,23 @@ class Users extends CI_Controller {
             // Si la validation réussit, vérifier les informations de connexion
             $login = $this->input->post('login');
             $password = $this->input->post('password');
-            echo "Login: $login, Password: $password"; 
             $user = $this->User_model->login($login, $password);
     
             if ($user) {
                 // Utilisateur connecté avec succès
-                // Vous pouvez stocker des informations de session ici si nécessaire
                 $this->session->set_userdata('user_id', $user->id);
-                redirect('dashboard'); // Rediriger vers la page d'accueil ou le tableau de bord après la connexion
+                redirect('dashboard');
             } else {
                 // Échec de la connexion, afficher un message d'erreur
                 $data['error_message'] = 'Nom d\'utilisateur ou mot de passe incorrect.';
                 $this->load->view('login_view', $data);
             }
+            
         }
-
-        
     }
+    
+    
+    
     
     public function dashboard() {
         // Vérifier si l'utilisateur est connecté
@@ -99,7 +95,7 @@ class Users extends CI_Controller {
         redirect('users/login');
     }
     
-}
 
+}
 
 ?>
