@@ -23,7 +23,15 @@
     </div>
         </div><!-- # entete -->
         <div id="contenu">
-            <?php $this->load->view($content); ?>
+        <h1>Bienvenue, <?php echo $this->session->userdata('username'); ?>!</h1>
+        
+        <?php if ($this->session->userdata('username')): ?>
+        <!-- Afficher le bouton de déconnexion uniquement si l'utilisateur est connecté -->
+        <form action="<?php echo base_url('index.php/users/logout'); ?>" method="post">
+            <button type="submit">Déconnexion</button>
+        </form>
+    <?php endif; ?>
+   
         </div><!-- # contenu -->
         <div id="pied">
             <strong>&copy;2021</strong>

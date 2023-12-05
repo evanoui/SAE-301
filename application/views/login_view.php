@@ -18,7 +18,7 @@
     <?php echo form_open('users/login'); ?>
 
     <label for="login">Nom d'utilisateur</label>
-    <input type="text" name="login" required>
+    <input type="text" name="username" required>
 
     <label for="password">Mot de passe</label>
     <input type="password" name="password" required>

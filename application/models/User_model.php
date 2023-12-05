@@ -33,22 +33,21 @@ class User_model extends CI_Model {
         $this->db->delete('utilisateur');
     }
 
-    public function login($login, $password) {
-        $query = $this->db->get_where('utilisateur', array('login' => $login));
+    public function login($username, $password)
+{
     
-        // Vérifier si la requête a réussi
-        if ($query) {
-            $user = $query->row();
-    
-            // Vérifier si l'utilisateur existe et si le mot de passe est correct
-            if ($user && password_verify($password, $user->password)) {
-                return $user;
-            }
-        }
-    
-        // Si quelque chose ne va pas (utilisateur non trouvé, mot de passe incorrect, erreur de base de données, etc.)
-        return null;
+    // Vérifiez les informations d'identification dans la base de données
+    $this->db->where('login', $username); // Changez 'username' à 'login'
+    $this->db->where('password', md5($password)); // Assurez-vous de traiter correctement le mot de passe (hachage, etc.)
+    $query = $this->db->get('utilisateur');
+
+    // Si un utilisateur correspond, retournez TRUE, sinon FALSE
+    if ($query->num_rows() == 1) {
+        return TRUE;
+    } else {
+        return FALSE;
     }
-    
 }
+}
+
 ?>

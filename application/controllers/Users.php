@@ -8,6 +8,7 @@ class Users extends CI_Controller {
         $this->load->model('User_model');
         $this->load->helper('url');
         $this->load->library('session');
+        $this->load->library('form_validation');
     }
 
     public function create() {
@@ -46,56 +47,53 @@ class Users extends CI_Controller {
         $this->User_model->delete_user($user_id);
         redirect('users/user_list'); 
     }
+
     public function login() {
-        $this->load->library('form_validation');
-        
-        $this->form_validation->set_rules('login', 'Nom d\'utilisateur', 'required|trim');
-        $this->form_validation->set_rules('password', 'Mot de passe', 'required');
-        
-        // Initialiser la variable $user_is_logged_in
-        $data['user_is_logged_in'] = $this->session->userdata('user_id') !== null;
+        // Logique pour récupérer les données du formulaire de connexion
+        $login = $this->input->post('username'); // Utilisez 'username' au lieu de 'user_id'
+        $password = $this->input->post('password');
     
-        if ($this->form_validation->run() === FALSE) {
-            // Si la validation échoue, réafficher le formulaire avec les erreurs
-            $this->load->view('login_view', $data);
+        // Utilisez la méthode du modèle pour vérifier les informations d'identification
+        $this->load->model('User_model');
+        $authenticated = $this->User_model->login($login, $password);
+    
+        if ($authenticated) {
+            // Si l'authentification réussit, créez une session
+            $user_data = array(
+                'user_id' => $login, // Utilisez 'username' ici
+                'username' => $login,
+                // ... d'autres données que vous souhaitez stocker dans la session
+            );
+    
+            $this->session->set_userdata($user_data);
+    
+            // Redirigez l'utilisateur vers une page après la connexion
+            redirect(''); // Assurez-vous que 'login_view' est une route valide dans votre application
         } else {
-            // Si la validation réussit, vérifier les informations de connexion
-            $login = $this->input->post('login');
-            $password = $this->input->post('password');
-            $user = $this->User_model->login($login, $password);
+            // Si l'authentification échoue, vous pouvez gérer cela ici (afficher un message d'erreur, etc.)
+            // ...
     
-            if ($user) {
-                // Utilisateur connecté avec succès
-                $this->session->set_userdata('user_id', $user->id);
-                redirect('dashboard');
-            } else {
-                // Échec de la connexion, afficher un message d'erreur
-                $data['error_message'] = 'Nom d\'utilisateur ou mot de passe incorrect.';
-                $this->load->view('login_view', $data);
-            }
-            
+            // Initialisez la variable $user_is_logged_in à false
+            $data['user_is_logged_in'] = false;
+    
+            // Chargez la vue avec les données
+            $this->load->view('login_view', $data);
         }
     }
     
-    
-    
-    
-    public function dashboard() {
-        // Vérifier si l'utilisateur est connecté
-        if (!$this->session->userdata('user_id')) {
-            redirect('users/login');
-        }
-    
-        // Charger la vue du tableau de bord
-        $this->load->view('dashboard_view');
-    }
 
     public function logout() {
+        // Déconnectez l'utilisateur et détruisez la session
+        $this->session->unset_userdata('username');
         $this->session->sess_destroy();
-        redirect('users/login');
+        
+        // Redirigez l'utilisateur vers une page après la déconnexion
+        redirect('users/login'); // Assurez-vous que 'auth/login' est une route valide dans votre application
     }
+}
     
 
-}
+
+
 
 ?>

@@ -10,6 +10,12 @@
 </head>
 <body>
     <h1>Page home</h1>
+     <!-- template.php ou autre fichier -->
+<!-- ... votre contenu précédent ... -->
+<?php if ($this->session->userdata('username')) : ?>
+    <a href="<?php echo base_url('logout'); ?>">Déconnexion</a>
+<?php endif; ?>
+<!-- ... votre contenu suivant ... -->
 
     ?>
 </body>
