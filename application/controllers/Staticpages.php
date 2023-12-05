@@ -22,6 +22,8 @@ class Staticpages extends CI_Controller {
     public function index() {
         $this->display('home');
     }
+
+    public function index() { 
 }
 ?>
 

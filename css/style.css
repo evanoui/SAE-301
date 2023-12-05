@@ -1,0 +1,43 @@
+:root {
+    --firts-color: #04BBFF;
+}
+
+
+
+body .header {display: flex;
+flex-direction: row;
+justify-content: space-between;
+justify-content: center;
+align-items: center;
+}
+
+body .header .contain1{display: flex;
+flex-direction: row;
+}
+
+
+body .header .contain1 h1 {font-family: ;}
+
+
+body .header .contain2 {display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+}
+
+
+body .header .contain2 .box {display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+border:5px solid var(--firts-color) }
+
+body .header .contain3 {display: flex;
+flex-direction: row;
+justify-content: space-around;
+align-items: center;}
+
+body .header .contain3 .box{display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;}
