@@ -13,17 +13,21 @@
 <body>
     <div id="global">
         <div id="entete">
-        <div class="header">
+    
     <div class="contain1"><h1>Dicathlon</h1></div>
     <div class="contain2"><div class="box"><input type="text"></div><img src="" alt=""></div>
     <div class="contain3">
     <div class="box"><img src="" alt=""><h3>Compte</h3></div>
     <div class="box"><img src="" alt=""><h3>Réservations</h3></div>
-    <div class="box"><img src="" alt=""><h3>Aide/FAQ</h3></div></div>
+    <div class="box"><img src="" alt=""><h3>Aide/FAQ</h3></div>
     </div>
         </div><!-- # entete -->
         <div id="contenu">
+        <div class="carousselle" id="1"><div class="description">Venez découvrir notre nouvelle gamme de tapis roulant </div><div class="boutton">Découvrir</div></div>
+        <div class="carousselle" id="1"><div class="description">Venez découvrir notre nouvelle gamme de tapis roulant </div><div class="boutton">Découvrir</div></div>
+
         <h1>Bienvenue, <?php echo $this->session->userdata('username'); ?>!</h1>
+
         
         <?php if ($this->session->userdata('username')): ?>
         <!-- Afficher le bouton de déconnexion uniquement si l'utilisateur est connecté -->
