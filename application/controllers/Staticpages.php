@@ -10,10 +10,10 @@ class Staticpages extends CI_Controller {
     public function display($content = 'home') {
         // Charger la bibliothèque de session
         $this->load->library('session');
-    
+        
         // Charger la bibliothèque de base de données
         $this->load->database();
-    
+        
         if (!file_exists('application/views/' . $content . '.php')) {
             // Whoops, we don't have a page for that!
             show_404();
