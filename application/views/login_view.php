@@ -10,7 +10,7 @@
 <body>
 
     <h2>Connexion</h2>
-
+    
     <?php echo validation_errors(); ?>
 
     <?php if(isset($error_message)) echo '<p>'.$error_message.'</p>'; ?>
@@ -27,13 +27,7 @@
 
     <?php echo form_close(); ?>
 
-    <?php if ($user_is_logged_in): ?>
-        <!-- Afficher le lien de déconnexion uniquement lorsque l'utilisateur est connecté -->
-        <p>Bienvenue, <?php echo $user->login; ?> | <a href="<?php echo base_url('users/logout'); ?>">Déconnexion</a></p>
-    <?php else: ?>
-        <!-- Afficher le lien de connexion uniquement lorsque l'utilisateur n'est pas connecté -->
-        <p><a href="<?php echo base_url('users/login'); ?>">Connexion</a></p>
-    <?php endif; ?>
+    
 
 </body>
 </html>

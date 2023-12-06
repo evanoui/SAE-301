@@ -17,7 +17,13 @@ flex-direction: row;
 }
 
 
-body .header .contain1 h1 {font-family: ;}
+h1 {
+    color: #04BBFF;
+}
+
+body .header .contain1 h1 {
+color: #04BBFF;}
+
 
 
 body .header .contain2 {display: flex;
@@ -42,3 +48,4 @@ body .header .contain3 .box{display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;}
+
