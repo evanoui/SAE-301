@@ -1,10 +1,15 @@
 :root {
-    --first-color: #19ff04;
-    --second-color:#014886;
+    --first-color: #ff0404;
+    --second-color:#860101;
 }
 
 
 
+#global{display: flex;
+flex-direction: column;
+justify-content: space-between;
+align-items: center;
+}
 
 h1 {
     color: var(--first-color)
