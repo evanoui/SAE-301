@@ -42,7 +42,7 @@
    
         </div><!-- # contenu -->
         <div id="pied">
-            <strong>&copy;2021</strong>
+           
         </div><!--#pied-->
     </div><!--#global-->
 

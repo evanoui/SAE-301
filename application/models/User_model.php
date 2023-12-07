@@ -11,7 +11,7 @@ class User_model extends CI_Model {
     public function add_user() {
         $data = array(
             'login' => $this->input->post('login'),
-            'password' => sha1($this->input->post('password')), // Note: utiliser des méthodes de hachage sécurisées en production
+            'password' => md5($this->input->post('password')), // Note: utiliser des méthodes de hachage sécurisées en production
             'nom' => $this->input->post('nom'),
             'prenom' => $this->input->post('prenom'),
             'ddn' => $this->input->post('ddn'),
@@ -38,7 +38,7 @@ class User_model extends CI_Model {
     
     // Vérifiez les informations d'identification dans la base de données
     $this->db->where('login', $username); // Changez 'username' à 'login'
-    $this->db->where('password', sha1($password)); // Assurez-vous de traiter correctement le mot de passe (hachage, etc.)
+    $this->db->where('password', md5($password)); // Assurez-vous de traiter correctement le mot de passe (hachage, etc.)
     $query = $this->db->get('utilisateur');
 
     // Si un utilisateur correspond, retournez TRUE, sinon FALSE
