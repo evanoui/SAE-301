@@ -7,7 +7,7 @@
         <?php echo $content; ?> - CodeIgniter 3 Tutorial
     </title>
     <link rel = "stylesheet" type = "text/css" 
-   href = "<?php echo base_url('css/style.css'); ?>">
+   href = "<?php echo base_url('css/index.css'); ?>">
    <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">

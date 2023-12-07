@@ -9,7 +9,7 @@
         <?php echo $content; ?> - CodeIgniter 3 Tutorial
     </title>
     <link rel = "stylesheet" type = "text/css" 
-   href = "<?php echo base_url('css/style.css'); ?>">
+   href = "<?php echo base_url('css/connexion.css'); ?>">
    <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,15 +44,22 @@
     <?php if(isset($error_message)) echo '<p>'.$error_message.'</p>'; ?>
 
     <?php echo form_open('users/login'); ?>
+    <div class="conteneur_connexion">
     
+    <div class='login'>
     <label for="login">Nom d'utilisateur</label>
-    <input type="text" name="username" required>
+    <input class='saisi'type="text" name="username" required>
+    </div>
 
+    <div class='password'>
     <label for="password">Mot de passe</label>
-    <input type="password" name="password" required>
+    <input class='saisi' type="password" name="password" required>
+    </div>
 
-    <button type="submit">Se connecter</button>
-
+    <div class='conteneur_bouton'>
+    <button class="bouton" type="submit">Se connecter</button>
+    </div>
+    </div>
     <?php echo form_close(); ?>
         
    
