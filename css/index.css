@@ -46,15 +46,7 @@ form{
         margin-bottom: auto;
 }
 
-a{
-    margin-top: auto;
-    margin-bottom: auto;
-}
 
-button{
-    margin-left: 10px;
-    background-color: var(--first-color);
-}
 
 .contain3{
     display: flex;
@@ -108,4 +100,37 @@ footer{
 
 .info{
     margin-right: 60px;
+}
+
+.bouton{
+ 
+    color: white; /* Couleur du texte */
+    border: none; /* Supprimer la bordure du bouton */
+    padding: 5px 10px; /* Espace à l'intérieur du bouton */
+    text-align: center; /* Centrer le texte à l'intérieur du bouton */
+    text-decoration: none; /* Supprimer la décoration du texte */
+    display: inline-block;
+    font-size: 16px; /* Taille du texte */
+    border-radius: 5px; /* Bordure arrondie */
+    cursor: pointer; /* Curseur pointeur au survol */
+    
+}
+
+button{
+    background-color: var(--first-color);
+    color: white; /* Couleur du texte */
+    border: none; /* Supprimer la bordure du bouton */
+    padding: 5px 10px; /* Espace à l'intérieur du bouton */
+    text-align: center; /* Centrer le texte à l'intérieur du bouton */
+    text-decoration: none; /* Supprimer la décoration du texte */
+    display: inline-block;
+    font-size: 16px; /* Taille du texte */
+    border-radius: 5px; /* Bordure arrondie */
+    cursor: pointer; /* Curseur pointeur au survol */
+}
+
+a{
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 10px;
 }

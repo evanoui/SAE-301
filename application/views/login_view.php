@@ -23,7 +23,7 @@
     
         
     <header>
-    <div class="contain1"><h1>Dicathlon</h1></div>
+    <div class="contain1"><h1><a href="..">Dicathlon</a></h1></div>
     <div class="contain2"><input type="text" class="recherche" placeholder="Que recherchez vous ?"></div>
     
     <div class="contain4">
@@ -33,9 +33,9 @@
     </div>
     </header>
     <div class="conteneur_categories">
-    <div class="categorie"><h2>Accueil</h2></div>
-    <div class="categorie"><h2>Catalogue</h2></div>
-    <div class="categorie"><h2>Nouveauté</h2></div>
+    <div class="categorie"><h2 id='connexion'>Connexion</h2></div>
+    <div class="categorie"><h2 id='inscription'><a href="create">Inscription</a></h2></div>
+
     </div>
         </div><!-- # entete -->
         <div id="contenu">
@@ -61,9 +61,9 @@
     </div>
     </div>
     <?php echo form_close(); ?>
-        
-   
-        </div><!-- # contenu -->
+  </div>
+
+  
         
 <footer>
     <div class="conteneur_footer">

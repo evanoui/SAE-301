@@ -49,6 +49,8 @@ form{
 a{
     margin-top: auto;
     margin-bottom: auto;
+    text-decoration: none;
+
 }
 
 button{
@@ -84,7 +86,7 @@ justify-content: center;
 }
 
 .categorie{
-    margin-right: 40px;
+    margin-right: 15px;
 }
 
 footer{
@@ -163,3 +165,8 @@ footer{
     text-decoration: none; /* Supprimer la décoration du texte */
     border-radius: 5px; /* Bordure arrondie */
 }
+
+#connexion{
+    color: var(--second-color);
+}
+
