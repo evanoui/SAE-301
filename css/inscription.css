@@ -3,11 +3,12 @@
     --second-color:#014886;
 }
 
+html,
 body{
     font-family: 'roboto';
     margin-left: 0;
     margin-right: 0;
-    
+  
 }
 
 h1{
@@ -93,6 +94,7 @@ footer{
     bottom: 0;
     margin-top: 30px;
     width: 100%;
+   
 }
 
 .conteneur_footer{
@@ -120,16 +122,13 @@ footer{
     border: 3px solid var(--first-color);
     border-radius: 20%;
     width: 10em;
-    height: 12em;
+    height: 17em;
     padding: 60px;
     margin: auto; /* Centrer le formulaire sur la page */
     
 }
 
-.password{
-    padding-top: 20px;
-    
-}
+
 
 .conteneur_bouton{
     padding-top: 20px;

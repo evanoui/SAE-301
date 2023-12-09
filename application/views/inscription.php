@@ -1,15 +1,12 @@
-<!-- login_view.php -->
-
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
     <meta charset="utf-8" />
     <title>
         <?php echo $content; ?> - CodeIgniter 3 Tutorial
     </title>
     <link rel = "stylesheet" type = "text/css" 
-   href = "<?php echo base_url('css/connexion.css'); ?>">
+   href = "<?php echo base_url('css/inscription.css'); ?>">
    <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,7 +15,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&family=Source+Code+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
-
 <body>
     
         
@@ -37,34 +33,34 @@
     <div class="categorie"><h2 id='inscription'><a href="inscription">Inscription</a></h2></div>
 
     </div>
-        </div><!-- # entete -->
-        <div id="contenu">
-        <?php echo validation_errors(); ?>
+    <?php echo validation_errors(); ?>
 
-    <?php if(isset($error_message)) echo '<p>'.$error_message.'</p>'; ?>
-
-    <?php echo form_open('users/login'); ?>
+    <?php echo form_open('users/inscription'); ?>
     <div class="conteneur_connexion">
-    
-    <div class='login'>
-    <label for="login">Nom d'utilisateur</label>
-    <input class='saisi'type="text" name="username" required>
-    </div>
+        <label for="login">Nom d'utilisateur:</label>
+        <input class="saisi" type="text" name="login" value="<?php echo set_value('login'); ?>">
+   
+        <label for="password">Mot de passe:</label>
+        <input class="saisi" type="password" name="password">
 
-    <div class='password'>
-    <label for="password">Mot de passe</label>
-    <input class='saisi' type="password" name="password" required>
-    </div>
+        <label for="nom">Nom:</label>
+        <input class="saisi" type="text" name="nom" value="<?php echo set_value('nom'); ?>">
 
-    <div class='conteneur_bouton'>
-    <button class="bouton" type="submit">Se connecter</button>
-    </div>
-    </div>
+        <label for="prenom">Prénom:</label>
+        <input class="saisi" type="text" name="prenom" value="<?php echo set_value('prenom'); ?>">
+
+        <label for="ddn">Date de naissance:</label>
+        <input class="saisi" type="date" name="ddn" value="<?php echo set_value('ddn'); ?>">
+
+        <label for="email">Adresse e-mail:</label>
+        <input class="saisi" type="text" name="email" value="<?php echo set_value('email'); ?>">
+
+        <div class='conteneur_bouton'>
+        <button class="bouton" type="submit" value="S'inscrire">S'inscrire</button>
+        </div>
+    </div>  
     <?php echo form_close(); ?>
-  </div>
 
-  
-        
 <footer>
     <div class="conteneur_footer">
     <div class="conteneur_info">
@@ -89,5 +85,4 @@
 </footer>
 
 </body>
-
-
+</html>

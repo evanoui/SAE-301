@@ -11,7 +11,7 @@ class User_model extends CI_Model {
     public function add_user() {
         $data = array(
             'login' => $this->input->post('login'),
-            'password' => md5($this->input->post('password')), // Note: utiliser des méthodes de hachage sécurisées en production
+            'password' => md5($this->input->post('password')), 
             'nom' => $this->input->post('nom'),
             'prenom' => $this->input->post('prenom'),
             'ddn' => $this->input->post('ddn'),
@@ -47,6 +47,20 @@ class User_model extends CI_Model {
     } else {
         return FALSE;
     }
+}
+
+public function inscription() {
+    $data = array(
+        'login' => $this->input->post('login'),
+        'password' => md5($this->input->post('password')),
+        'nom' => $this->input->post('nom'),
+        'prenom' => $this->input->post('prenom'),
+        'ddn' => $this->input->post('ddn'),
+        'email' => $this->input->post('email'),
+        'type_utilisateur' => 'client' // client par défaut
+    );
+
+    $this->db->insert('utilisateur', $data);
 }
 }
 

@@ -34,6 +34,28 @@ class Users extends CI_Controller {
         }
     }
 
+    public function inscription() {
+        // Charger la bibliothèque de formulaire CodeIgniter si ce n'est pas déjà fait
+        $this->load->library('form_validation');
+
+        // Définir les règles de validation pour le formulaire
+        $this->form_validation->set_rules('login', 'Nom d\'utilisateur', 'required|trim');
+        $this->form_validation->set_rules('password', 'Mot de passe', 'required');
+        $this->form_validation->set_rules('nom', 'Nom', 'required');
+        $this->form_validation->set_rules('prenom', 'Prénom', 'required');
+        $this->form_validation->set_rules('ddn', 'Date de naissance', 'required');
+        $this->form_validation->set_rules('email', 'Adresse e-mail', 'required|valid_email');
+
+        if ($this->form_validation->run() === FALSE) {
+            // Si la validation échoue, réafficher le formulaire avec les erreurs
+            $this->load->view('inscription');
+        } else {
+            // Si la validation réussit, ajouter l'utilisateur à la base de données
+            $this->User_model->inscription();
+            redirect('users/login'); // Rediriger vers une page de succès ou une autre action
+        }
+    }
+
     public function success() {
         // Afficher une page de succès après l'ajout d'un utilisateur
         $this->load->view('add_success');
