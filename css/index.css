@@ -1,13 +1,14 @@
 :root {
     --first-color: #04BBFF;
     --second-color:#014886;
+    --roboto-font:'roboto';
 }
 
 body{
     font-family: 'roboto';
     margin-left: 0;
     margin-right: 0;
-    
+
 }
 
 h1{
@@ -134,3 +135,73 @@ a{
     margin-bottom: auto;
     margin-left: 10px;
 }
+
+/* Style partie recommandation */
+
+#contenu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+
+}
+
+.carousselle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 500px;
+    height: 200px;
+    padding: 20px;
+    
+    background-color: var(--first-color);
+    background-image: url("<?php echo base_url(".\img\img_carouselle.png") ?>");
+}
+
+.carousselle .description {background-color: white;
+opacity: 50%;   
+height: 60%;
+width: 30%;
+color: var(--second-color);
+padding: 10px;}
+
+.carousselle .boutton {align-self: end;
+
+color: white;
+background-color: var(--first-color);
+padding: 5px;}
+
+/* Style partie recherche récentes */
+
+.part_recherche-recentes {display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+height: 400px;
+width: 200px;
+gap: 100px;
+font-family: var(--roboto-font);}
+
+
+.part_recherche-recentes .box {
+    display: flex;
+    flex-direction: column;
+   
+    justify-content:center;
+    gap: 10px;
+    padding: 10px;
+    border-right: black solid 2px ;
+  
+    
+}
+
+.part_recherche-recentes .box .info {display: flex;
+flex-direction: row;
+
+align-items: center;
+gap: 30px;
+}
+
+.part_recherche-recentes img {width:75% ;}

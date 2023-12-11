@@ -52,8 +52,43 @@
     </div>
         </div><!-- # entete -->
         <div id="contenu">
-        <div class="carousselle" id="1"><div class="description">Venez découvrir notre nouvelle gamme de tapis roulant </div><div class="boutton">Découvrir</div></div>
-      
+        <h1>Vos Recommandations</h1>
+        <div class="part_recommandation">
+        <div class="carousselle" id="1">
+            <div class="description">Venez découvrir notre nouvelle gamme de <u>tapis roulant</u></div>
+            <div class="boutton">Découvrir</div>
+        </div>
+        </div>
+        <h1>Vos recherches récentes</h1>
+        <div class="part_recherche-recentes">
+            <div class="box">
+                <h2>Tapis Roulant</h2>
+                <img src="<?php echo base_url('img\article_recherche-recentes.png'); ?>" alt="Tapis de course">
+                <div class="info">
+                    <button>Réserver</button>
+                    <p>35€/jour</p>
+                </div>
+            </div>
+            <div class="box">
+                <h2>Tapis Roulant</h2>
+                <img src="<?php echo base_url('img\article_recherche-recentes.png'); ?>" alt="Tapis de course">
+                <div class="info">
+                    <button>Réserver</button>
+                    <p>35€/jour</p>
+                </div>
+            </div>
+            <div class="box">
+                <h2>Tapis Roulant</h2>
+                <img src="<?php echo base_url('img\article_recherche-recentes.png'); ?>" alt="Tapis de course">
+                <div class="info">
+                    <button>Réserver</button>
+                    <p>35€/jour</p>
+                </div>
+            </div>
+        </div>
+            
+        </div>
+
 
         
    
