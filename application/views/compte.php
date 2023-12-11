@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&family=Source+Code+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
-<body>
+
      
 <header>
     <div class="contain1"><h1><a href="..">Dicathlon</a></h1></div>
@@ -27,21 +27,26 @@
     <div class="box"><img class="icone" src="<?php echo base_url('img/aide.svg'); ?>" alt="Description de l'image"><h3>Aide/FAQ</h3></div>
     </div>
     </header>
+<body>
+    
 
 <h2>Mon Compte</h2>
+<h1>Bienvenue, <?php echo $this->session->userdata('username'); ?> !</h1>
 
-<!-- Afficher les détails du compte de l'utilisateur (nom, prénom, etc.) -->
-<!-- Dans votre vue 'compte' -->
-<a href="#" onclick="confirmDelete()">Supprimer mon compte</a>
+<form action="<?php echo base_url('index.php/users/delete_account'); ?>" method="post">
+    <input type="hidden" name="confirm" value="true">
+    <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer votre compte ?')">Supprimer mon compte</button>
+</form>
 
-<!-- Ajoutez ce script JavaScript pour demander une confirmation -->
-<script>
-function confirmDelete() {
-    if (confirm('Êtes-vous sûr de vouloir supprimer votre compte ?')) {
-        window.location.href = '<?php echo base_url("users/delete_account"); ?>';
-    }
-}
-</script>
+
+                    <!-- Dans votre vue ou tableau affichant les utilisateurs -->
+                    <a href="<?php echo base_url('index.php/users/delete_account'); ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer votre compte ?')">Supprimer mon compte</a>
+
+
+
+
+
+
 
 </body>
 
