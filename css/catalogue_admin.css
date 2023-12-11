@@ -1,0 +1,76 @@
+:root {
+    --first-color: #04BBFF;
+    --second-color:#014886;
+}
+
+body{
+    font-family: 'roboto';
+    margin-left: 0;
+    margin-right: 0;
+    
+}
+
+/*----------header-----------*/
+
+h1{
+    color: var(--first-color);
+    font-family: 'Gabarito' ;
+}
+
+h3{
+    font-family: 'Roboto';
+    margin-top: 0;
+}
+.recherche {
+    border: 3px solid var(--first-color);
+
+}
+
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.icone {
+    width: 40px;
+}
+
+.contain2{
+    margin-top: auto;
+    margin-bottom: auto;
+   
+}
+
+
+.contain3{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.contain4{
+    display: flex;
+    flex-direction: row;
+}
+
+
+.box{
+    padding-right: 10px;
+    text-align: center;
+  
+}
+
+h3{
+    margin-top: 0;
+}
+
+.conteneur_categories{
+    display: flex;
+    flex-direction: row;
+justify-content: center;
+}
+
+.categorie{
+    margin-right: 40px;
+}

@@ -26,7 +26,7 @@ class Users extends CI_Controller {
 
         if ($this->form_validation->run() === FALSE) {
             // Si la validation échoue, réafficher le formulaire avec les erreurs
-            $this->load->view('create_user');
+            $this->load->view('creer_gerant_admin');
         } else {
             // Si la validation réussit, ajouter l'utilisateur à la base de données
             $this->User_model->add_user();
@@ -112,7 +112,41 @@ class Users extends CI_Controller {
         // Redirigez l'utilisateur vers une page après la déconnexion
         redirect('users/login'); // Assurez-vous que 'auth/login' est une route valide dans votre application
     }
+
+   // Users.php
+
+   public function delete_account() {
+    // Assurez-vous que l'utilisateur est connecté
+    if (!$this->session->userdata('user_id')) {
+        // Redirigez l'utilisateur vers la page de connexion s'il n'est pas connecté
+        redirect('users/login');
+    }
+
+    // Si la confirmation de suppression n'est pas reçue, redirigez vers la page 'compte'
+    if (!$this->input->get('confirm')) {
+        redirect('users/compte');
+    }
+
+    // Récupérez l'ID de l'utilisateur connecté
+    $user_id = $this->session->userdata('user_id');
+
+    // Supprimez le compte de l'utilisateur à partir de la base de données
+    $this->User_model->delete_user($user_id);
+
+    // Déconnectez l'utilisateur
+    $this->session->unset_userdata('user_id');
+    $this->session->unset_userdata('username');
+    $this->session->sess_destroy();
+
+    // Redirigez l'utilisateur vers la page d'accueil ou une autre page
+    redirect('users/compte');
 }
+
+
+
+}
+
+
     
 
 

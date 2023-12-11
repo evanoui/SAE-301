@@ -29,8 +29,8 @@
     </div>
     </header>
     <div class="conteneur_categories">
-    <div class="categorie"><h2 id='connexion'>Connexion</h2></div>
-    <div class="categorie"><h2 id='inscription'><a href="inscription">Inscription</a></h2></div>
+    <div class="categorie"><h2 id='connexion'><a href="login">Connexion</a></h2></div>
+    <div class="categorie"><h2 id='inscription'>Inscription</h2></div>
 
     </div>
     <?php echo validation_errors(); ?>

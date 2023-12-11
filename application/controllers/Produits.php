@@ -35,7 +35,12 @@ class Produits extends CI_Controller {
 
     public function list() {
         $data['products'] = $this->Produit_model->get_products(); // Assurez-vous d'avoir cette méthode dans votre modèle
-        $this->load->view('product_list', $data);
+        $this->load->view('liste_produit_gerant', $data);
+    }
+
+    public function list_client() {
+        $data['products'] = $this->Produit_model->get_products(); // Assurez-vous d'avoir cette méthode dans votre modèle
+        $this->load->view('liste_produit_client', $data);
     }
 
     public function delete($product_id) {

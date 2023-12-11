@@ -41,12 +41,14 @@ class User_model extends CI_Model {
     $this->db->where('password', md5($password)); // Assurez-vous de traiter correctement le mot de passe (hachage, etc.)
     $query = $this->db->get('utilisateur');
 
+    
     // Si un utilisateur correspond, retournez TRUE, sinon FALSE
     if ($query->num_rows() == 1) {
         return TRUE;
     } else {
         return FALSE;
     }
+
 }
 
 public function inscription() {
