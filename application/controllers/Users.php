@@ -74,7 +74,7 @@ class Users extends CI_Controller {
         // Logique pour récupérer les données du formulaire de connexion
         $login = $this->input->post('username'); // Utilisez 'username' au lieu de 'user_id'
         $password = $this->input->post('password');
-    
+        
         // Utilisez la méthode du modèle pour vérifier les informations d'identification
         $this->load->model('User_model');
         $authenticated = $this->User_model->login($login, $password);
@@ -101,6 +101,7 @@ class Users extends CI_Controller {
             // Chargez la vue avec les données
             $this->load->view('login_view', $data);
         }
+        
 
     }
     

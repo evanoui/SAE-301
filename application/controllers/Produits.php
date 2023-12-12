@@ -7,6 +7,7 @@ class Produits extends CI_Controller {
         parent::__construct();
         $this->load->model('Produit_model');
         $this->load->helper('url');
+        $this->load->library('session');
     }
 
 
@@ -36,6 +37,7 @@ class Produits extends CI_Controller {
     public function list() {
         $data['products'] = $this->Produit_model->get_products(); // Assurez-vous d'avoir cette méthode dans votre modèle
         $this->load->view('liste_produit_gerant', $data);
+        
     }
 
     public function list_client() {

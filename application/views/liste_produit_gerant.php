@@ -33,7 +33,8 @@
     <div class="categorie"><h2>Nouveauté</h2></div>
     </div>
 <body>
-
+    <?php $role = $this->session->userdata('type_utilisateur');
+echo "Le rôle de l'utilisateur est : " . $role; ?>
     <h2>Liste des Produits</h2>
 
     <table border="1">

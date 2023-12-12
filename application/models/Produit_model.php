@@ -32,4 +32,6 @@ class Produit_model extends CI_Model {
         $this->db->where('id', $product_id);
         $this->db->delete('produit');
     }
+
 }
+
