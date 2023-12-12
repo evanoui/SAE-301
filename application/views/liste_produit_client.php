@@ -34,6 +34,9 @@
     <div class="categorie"><h2>Catalogue</h2></div>
     <div class="categorie"><h2>Nouveauté</h2></div>
     </div>
+
+<div class="catalogue">
+    <h1>Votre succès sportif commence ici, en ligne !</h1>
     <h2>Liste des Produits</h2>
 
     <table border="1">
@@ -58,6 +61,8 @@
             </tr>
         <?php endforeach; ?>
     </table>
+</div>
+
 
 </body>
 </html>
