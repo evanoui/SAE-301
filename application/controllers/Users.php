@@ -101,6 +101,7 @@ class Users extends CI_Controller {
             // Chargez la vue avec les données
             $this->load->view('login_view', $data);
         }
+
     }
     
 

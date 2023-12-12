@@ -64,6 +64,8 @@ public function inscription() {
 
     $this->db->insert('utilisateur', $data);
 }
+
+
 }
 
 ?>
