@@ -61,7 +61,7 @@
         </div>
         <h1>Vos recherches récentes</h1>
         <div class="part_recherche-recentes">
-            <div class="box">
+            <div class="box" class="one" >
                 <h2>Tapis Roulant</h2>
                 <img src="<?php echo base_url('img\article_recherche-recentes.png'); ?>" alt="Tapis de course">
                 <div class="info">
@@ -69,7 +69,7 @@
                     <p>35€/jour</p>
                 </div>
             </div>
-            <div class="box">
+            <div class="box" class="two">
                 <h2>Tapis Roulant</h2>
                 <img src="<?php echo base_url('img\article_recherche-recentes.png'); ?>" alt="Tapis de course">
                 <div class="info">
@@ -77,7 +77,7 @@
                     <p>35€/jour</p>
                 </div>
             </div>
-            <div class="box">
+            <div class="box" class="three">
                 <h2>Tapis Roulant</h2>
                 <img src="<?php echo base_url('img\article_recherche-recentes.png'); ?>" alt="Tapis de course">
                 <div class="info">

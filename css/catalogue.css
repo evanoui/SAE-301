@@ -68,16 +68,26 @@ h3{
 .conteneur_categories{
     display: flex;
     flex-direction: row;
-justify-content: center;
+    justify-content: center;
 }
 
-.catalogue{ 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}   
 
 tr {display: flex;
-flex-direction: column;}
+justify-self: center;
 
+border: black 5px solid;
+justify-content: center;
+align-items: center;
+height: 500px;
+background-color: #04BBFF;
+margin: 50px;
+}
+
+th {display: none;}
+
+.box_catalogue {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap:50px;   
+}
