@@ -52,7 +52,6 @@ form{
 .contain3{
     display: flex;
     flex-direction: row;
-    
 }
 
 .contain4{
@@ -84,7 +83,7 @@ footer{
     bottom: 0;
     margin-top: 30px;
     width: 100%;
-    position: fixed;
+    position: relative;
 }
 
 .conteneur_footer{
@@ -145,7 +144,6 @@ a{
     justify-content: center;
     align-items: center;
     gap: 50px;
-
 }
 
 .carousselle {
@@ -155,8 +153,7 @@ a{
     align-items: center;
     width: 500px;
     height: 200px;
-    padding: 20px;
-    
+    padding: 20px; 
     background-color: var(--first-color);
     background-image: url("<?php echo base_url(".\img\img_carouselle.png") ?>");
 }
@@ -189,18 +186,14 @@ font-family: var(--roboto-font);}
 .part_recherche-recentes .box {
     display: flex;
     flex-direction: column;
-   
     justify-content:center;
     gap: 10px;
     padding: 10px;
-    border-right: black solid 2px ;
-  
-    
+    border-right: black solid 2px ;  
 }
 
 .part_recherche-recentes .box .info {display: flex;
 flex-direction: row;
-
 align-items: center;
 gap: 30px;
 }

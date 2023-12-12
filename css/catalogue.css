@@ -71,6 +71,13 @@ h3{
 justify-content: center;
 }
 
-.categorie{
-    margin-right: 40px;
-}
+.catalogue{ 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}   
+
+tr {display: flex;
+flex-direction: column;}
+
