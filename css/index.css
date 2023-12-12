@@ -158,10 +158,11 @@ a{
     background-image: url("<?php echo base_url(".\img\img_carouselle.png") ?>");
 }
 
-.carousselle .description {background-color: white;
-opacity: 50%;   
-height: 60%;
-width: 30%;
+.carousselle .description {
+    background-color: white;
+    opacity: 50%;   
+    height: 60%;
+    width: 30%;
 color: var(--second-color);
 padding: 10px;}
 

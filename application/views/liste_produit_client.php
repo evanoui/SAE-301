@@ -7,8 +7,7 @@
     <title>
         <?php echo $content; ?> - CodeIgniter 3 Tutorial
     </title>
-    <link rel = "stylesheet" type = "text/css" 
-   href = "<?php echo base_url('css/catalogue.css'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?= base_url('css/catalogue.css'); ?>">
    <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,8 +37,9 @@
 <div class="catalogue">
     <h1>Votre succès sportif commence ici, en ligne !</h1>
     <h2>Liste des Produits</h2>
-
-    <table border="1">
+    
+    <table>
+    
         <tr>
             <th>ID</th>
             <th>Type</th>
@@ -49,18 +49,23 @@
             <th>Prix de Location</th>
             <th>État</th>
         </tr>
+        
         <?php foreach ($products as $product): ?>
+         
             <tr>
-                <td><?php echo $product->id; ?></td>
-                <td><?php echo $product->type; ?></td>
-                <td><?php echo $product->description; ?></td>
-                <td><?php echo $product->marque; ?></td>
-                <td><?php echo $product->modele; ?></td>
-                <td><?php echo $product->prix_location; ?></td>
-                <td><?php echo $product->etat; ?></td>
+           
+                <td class="id"><?php echo $product->id; ?></td>
+                <td class="type"><?php echo $product->type; ?></td>
+                <td class="description">Description : <?php echo $product->description; ?></td>
+                <td class="marque">Marque : <?php echo $product->marque; ?></td>
+                <td class="modele">Modele : <?php echo $product->modele; ?></td>
+                <td class="prix">Prix à la journée : <?php echo $product->prix_location; ?></td>
+                
             </tr>
         <?php endforeach; ?>
+      
     </table>
+    
 </div>
 
 
