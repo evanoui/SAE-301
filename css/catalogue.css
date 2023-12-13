@@ -68,8 +68,13 @@ h3{
 .conteneur_categories{
     display: flex;
     flex-direction: row;
-    justify-content: center;
+justify-content: center;
 }
+
+.categorie{
+    margin-right: 40px;
+}
+
 
 
 tr {display: flex;

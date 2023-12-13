@@ -11,7 +11,7 @@ class Produits extends CI_Controller {
     }
 
 
-    public function add() {
+    public function ajouter() {
         // Charger la bibliothèque de formulaire CodeIgniter si ce n'est pas déjà fait
         $this->load->library('form_validation');
 
@@ -26,10 +26,10 @@ class Produits extends CI_Controller {
 
         if ($this->form_validation->run() === FALSE) {
             // Si la validation échoue, réafficher le formulaire avec les erreurs
-            $this->load->view('add_product');
+            $this->load->view('ajouter_produit');
         } else {
             // Si la validation réussit, ajouter l'utilisateur à la base de données
-            $this->Produit_model->add_product();
+            $this->Produit_model->ajouter_produit();
             redirect('produits/list'); // Rediriger vers une page de succès ou une autre action
         }
     }

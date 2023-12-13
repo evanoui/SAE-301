@@ -8,7 +8,7 @@ class Produit_model extends CI_Model {
         $this->load->database();
     }
 
-    public function add_product() {
+    public function ajouter_produit() {
         // Récupérer les données soumises depuis le formulaire et les ajouter à la base de données
         $data = array(
             'type' => $this->input->post('type'),

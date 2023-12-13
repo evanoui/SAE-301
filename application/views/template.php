@@ -47,7 +47,7 @@
     </header>
     <div class="conteneur_categories">
     <div class="categorie"><h2>Accueil</h2></div>
-    <div class="categorie"><h2><a href="produits/list_client">Catalogue</a></h2></div>
+    <div class="categorie"><h2><a href="index.php/produits/list_client">Catalogue</a></h2></div>
     <div class="categorie"><h2>Nouveauté</h2></div>
     </div>
         </div><!-- # entete -->
