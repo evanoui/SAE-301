@@ -1,21 +1,22 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Produits extends CI_Controller {
+class Produits extends CI_Controller
+{
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
         $this->load->model('Produit_model');
         $this->load->helper('url');
         $this->load->library('session');
     }
 
-
-    public function ajouter() {
-        // Charger la bibliothèque de formulaire CodeIgniter si ce n'est pas déjà fait
+    //Ajout d'un produit
+    public function ajouter()
+    {
         $this->load->library('form_validation');
 
-        // Définir les règles de validation pour le formulaire
         $this->form_validation->set_rules('type', 'Type', 'required|trim');
         $this->form_validation->set_rules('description', 'Description', 'required');
         $this->form_validation->set_rules('marque', 'Marque', 'required');
@@ -23,31 +24,34 @@ class Produits extends CI_Controller {
         $this->form_validation->set_rules('prix_location', 'Prix de Location', 'required');
         $this->form_validation->set_rules('etat', 'État', 'required');
 
-
         if ($this->form_validation->run() === FALSE) {
-            // Si la validation échoue, réafficher le formulaire avec les erreurs
             $this->load->view('ajouter_produit');
         } else {
-            // Si la validation réussit, ajouter l'utilisateur à la base de données
             $this->Produit_model->ajouter_produit();
-            redirect('produits/list'); // Rediriger vers une page de succès ou une autre action
+            redirect('produits/list');
         }
     }
 
-    public function list() {
-        $data['products'] = $this->Produit_model->get_products(); // Assurez-vous d'avoir cette méthode dans votre modèle
+    // Liste des produits et suppresion (gerant)
+    public function list()
+    {
+        $data['products'] = $this->Produit_model->get_products();
         $this->load->view('liste_produit_gerant', $data);
-        
+
     }
 
-    public function list_client() {
-        $data['products'] = $this->Produit_model->get_products(); // Assurez-vous d'avoir cette méthode dans votre modèle
+    // Liste des produits (client)
+    public function list_client()
+    {
+        $data['products'] = $this->Produit_model->get_products();
         $this->load->view('liste_produit_client', $data);
     }
 
-    public function delete($product_id) {
+    // Supp
+    public function delete($product_id)
+    {
         $this->Produit_model->delete_product($product_id);
         redirect('produits/list');
     }
-    
+
 }

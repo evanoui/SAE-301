@@ -8,11 +8,12 @@ class Internships extends CI_Controller
         $this->load->helper('url');
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
         $this->internships_model->delete_student($id);
         $this->index();
-        }
-        
+    }
+
     public function index()
     {
         $this->load->helper('form');
@@ -34,7 +35,7 @@ class Internships extends CI_Controller
         $this->load->vars($data);
         $this->load->view('template');
     }
-    
+
     public function create()
     {
         $this->load->helper('form');

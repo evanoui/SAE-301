@@ -9,7 +9,7 @@ class Produit_model extends CI_Model {
     }
 
     public function ajouter_produit() {
-        // Récupérer les données soumises depuis le formulaire et les ajouter à la base de données
+        // Ajouter les données dans la bdd
         $data = array(
             'type' => $this->input->post('type'),
             'description' => $this->input->post('description'),
@@ -23,7 +23,7 @@ class Produit_model extends CI_Model {
     }
 
     public function get_products() {
-        // Récupérer la liste des produits depuis la base de données
+        // Récupérer la liste des produits
         $query = $this->db->get('produit');
         return $query->result();
     }
