@@ -1,5 +1,3 @@
-<!-- product_list.php -->
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,8 +52,6 @@
 </div>
 
 <body>
-    <?php $role = $this->session->userdata('type_utilisateur');
-    echo "Le rôle de l'utilisateur est : " . $role; ?>
     <h2>Liste des Produits</h2>
 
     <table border="1">

@@ -21,7 +21,7 @@ class Users extends CI_Controller
         $this->form_validation->set_rules('password', 'Mot de passe', 'required');
         $this->form_validation->set_rules('nom', 'Nom', 'required');
         $this->form_validation->set_rules('prenom', 'Prénom', 'required');
-        $this->form_validation->set_rules('ddn', 'Date de naissance', 'required');
+        $this->form_validation->set_rules('ddn', 'Date de naissance', 'required|callback_verif_age');
         $this->form_validation->set_rules('email', 'Adresse e-mail', 'required|valid_email');
         $this->form_validation->set_rules('type_utilisateur', 'Type d\'utilisateur', 'required');
 
@@ -43,7 +43,7 @@ class Users extends CI_Controller
         $this->form_validation->set_rules('password', 'Mot de passe', 'required');
         $this->form_validation->set_rules('nom', 'Nom', 'required');
         $this->form_validation->set_rules('prenom', 'Prénom', 'required');
-        $this->form_validation->set_rules('ddn', 'Date de naissance', 'required');
+        $this->form_validation->set_rules('ddn', 'Date de naissance', 'required|callback_verif_age');
         $this->form_validation->set_rules('email', 'Adresse e-mail', 'required|valid_email');
 
         if ($this->form_validation->run() === FALSE) {
@@ -54,6 +54,22 @@ class Users extends CI_Controller
             redirect('users/login');
         }
     }
+
+    public function verif_age($date)
+{
+    // Calculer l'âge 
+    $birthdate = new DateTime($date);
+    $today = new DateTime();
+    $age = $birthdate->diff($today)->y;
+
+    // Vérifier si l'âge est supérieur ou égal à 18
+    if ($age < 18) {
+        $this->form_validation->set_message('verif_age', 'Vous devez être majeur pour créer un compte.');
+        return FALSE;
+    }
+
+    return TRUE;
+}
 
     public function success()
     {
@@ -95,7 +111,7 @@ class Users extends CI_Controller
             $this->load->view('login_view', $data);
         }
     }
-    
+
     public function logout()
     {
         // déconnexion et destruction de la session en cours 
@@ -112,27 +128,28 @@ class Users extends CI_Controller
             // Redirigez l'utilisateur vers la page de connexion s'il n'est pas connecté
             redirect('users/login');
         }
-
+    
         // Si le formulaire de confirmation est soumis
         if ($this->input->post('confirm')) {
             // Récupérez l'ID de l'utilisateur connecté
             $user_id = $this->session->userdata('user_id');
-            echo "ID de l'utilisateur à supprimer : $user_id";
+    
             // Supprimez le compte de l'utilisateur à partir de la base de données
             $this->User_model->delete_user($user_id);
-
+    
             // Déconnectez l'utilisateur
             $this->session->unset_userdata('user_id');
             $this->session->unset_userdata('username');
             $this->session->sess_destroy();
-
+    
             // Redirigez l'utilisateur vers la page d'accueil ou une autre page
             redirect(''); // ou vers la page souhaitée après la suppression du compte
         } else {
             // Si le formulaire de confirmation n'est pas soumis, redirigez vers la page 'compte'
-            redirect('users/compte');
+            redirect('users/modification_compte');
         }
     }
+    
 
 
     public function modification_compte()

@@ -43,6 +43,7 @@
 </header>
 
 <body>
+<a href="<?php echo base_url('index.php/users/delete_account'); ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer votre compte ?')">Supprimer mon compte</a>
     <h2>Mon Compte</h2>
     <?php echo form_open('users/modification_compte'); ?>
 

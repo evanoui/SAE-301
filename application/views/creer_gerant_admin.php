@@ -50,27 +50,29 @@
     <?php echo form_open('users/create'); ?>
     <div class="conteneur_connexion">
         <label for="login">Nom d'utilisateur:</label>
-        <input type="text" name="login" value="<?php echo set_value('login'); ?>">
+        <input class="saisi" type="text" name="login" value="<?php echo set_value('login'); ?>">
 
         <label for="password">Mot de passe:</label>
-        <input type="password" name="password">
-
+        <input class="saisi" type="password" name="password">
+        
         <label for="nom">Nom:</label>
-        <input type="text" name="nom" value="<?php echo set_value('nom'); ?>">
+        <input class="saisi" type="text" name="nom" value="<?php echo set_value('nom'); ?>">
 
         <label for="prenom">Prénom:</label>
-        <input type="text" name="prenom" value="<?php echo set_value('prenom'); ?>">
+        <input class="saisi" type="text" name="prenom" value="<?php echo set_value('prenom'); ?>">
 
         <label for="ddn">Date de naissance:</label>
-        <input type="date" name="ddn" value="<?php echo set_value('ddn'); ?>">
+        <input class="saisi" type="date" name="ddn" value="<?php echo set_value('ddn'); ?>">
 
         <label for="email">Adresse e-mail:</label>
-        <input type="text" name="email" value="<?php echo set_value('email'); ?>">
+        <input class="saisi" type="text" name="email" value="<?php echo set_value('email'); ?>">
 
         <label for="type_utilisateur">Type d'utilisateur:</label>
-        <input type="text" name="type_utilisateur" value="<?php echo set_value('type_utilisateur'); ?>">
+        <input class="saisi" type="text" name="type_utilisateur" value="<?php echo set_value('type_utilisateur'); ?>">
 
-        <input type="submit" value="Créer un utilisateur">
+        <div class='conteneur_bouton'>
+            <button class="bouton" type="submit" value="Créer un utilisateur">Créer un utilisateur</button>
+        </div>
     </div>
     <?php echo form_close(); ?>
 </body>
