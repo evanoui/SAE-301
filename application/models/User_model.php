@@ -33,17 +33,6 @@ class User_model extends CI_Model
         return $query->result();
     }
 
-    public function get_specific_user($user_id)
-    {
-        $query = $this->db->where('id', $user_id)->get('utilisateur');
-
-        if ($query->num_rows() > 0) {
-            return $query->row_array();
-        } else {
-            return null;
-        }
-    }
-
     public function delete_user($user_id)
     {
         $this->db->where('id', $user_id);

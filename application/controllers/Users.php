@@ -82,6 +82,7 @@ class Users extends CI_Controller
         $data['users'] = $this->User_model->get_users(); // Récupérer les utilisateurs
         $this->load->view('liste_utilisateur', $data);
     }
+
     public function delete($user_id)
     {
         $this->User_model->delete_user($user_id);
@@ -119,82 +120,6 @@ class Users extends CI_Controller
         $this->session->sess_destroy();
 
         redirect('users/login');
-    }
-
-    public function delete_account()
-    {
-        // Assurez-vous que l'utilisateur est connecté
-        if (!$this->session->userdata('user_id')) {
-            // Redirigez l'utilisateur vers la page de connexion s'il n'est pas connecté
-            redirect('users/login');
-        }
-    
-        // Si le formulaire de confirmation est soumis
-        if ($this->input->post('confirm')) {
-            // Récupérez l'ID de l'utilisateur connecté
-            $user_id = $this->session->userdata('user_id');
-    
-            // Supprimez le compte de l'utilisateur à partir de la base de données
-            $this->User_model->delete_user($user_id);
-    
-            // Déconnectez l'utilisateur
-            $this->session->unset_userdata('user_id');
-            $this->session->unset_userdata('username');
-            $this->session->sess_destroy();
-    
-            // Redirigez l'utilisateur vers la page d'accueil ou une autre page
-            redirect(''); // ou vers la page souhaitée après la suppression du compte
-        } else {
-            // Si le formulaire de confirmation n'est pas soumis, redirigez vers la page 'compte'
-            redirect('users/modification_compte');
-        }
-    }
-    
-
-
-    public function modification_compte()
-    {
-        // Assurez-vous que l'utilisateur est connecté
-        if (!$this->session->userdata('user_id')) {
-            // Redirigez l'utilisateur vers la page de connexion s'il n'est pas connecté
-            redirect('users/login');
-        }
-
-        // Récupérez l'ID de l'utilisateur connecté
-        $user_id = $this->session->userdata('user_id');
-
-        // Récupérez les informations actuelles de l'utilisateur depuis la base de données
-        $data['user'] = $this->User_model->get_specific_user($user_id);
-
-        // Chargez la vue pour la modification du compte avec les informations actuelles
-        $this->load->view('compte', $data);
-    }
-
-    public function sauvegarde_modif_compte()
-    {
-        // Assurez-vous que l'utilisateur est connecté
-        if (!$this->session->userdata('user_id')) {
-            // Redirigez l'utilisateur vers la page de connexion s'il n'est pas connecté
-            redirect('users/login');
-        }
-
-        // Récupérez l'ID de l'utilisateur connecté
-        $user_id = $this->session->userdata('user_id');
-
-        // Récupérez les données postées depuis le formulaire de modification
-        $data = array(
-            'first_name' => $this->input->post('first_name'),
-            'last_name' => $this->input->post('last_name'),
-            'dob' => $this->input->post('dob'),
-            'password' => $this->input->post('password'),
-            'email' => $this->input->post('email'),
-        );
-
-        // Appelez la méthode du modèle pour mettre à jour les informations de l'utilisateur
-        $this->User_model->update_user($user_id, $data);
-
-        // Redirigez l'utilisateur vers la page de compte ou une autre page
-        redirect('users/compte');
     }
 }
 ?>

@@ -43,28 +43,54 @@
 </header>
 
 <body>
-<a href="<?php echo base_url('index.php/users/delete_account'); ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer votre compte ?')">Supprimer mon compte</a>
-    <h2>Mon Compte</h2>
-    <?php echo form_open('users/modification_compte'); ?>
+<form method="post" action="<?php echo base_url('index.php/users/delete_account'); ?>">
+    <!-- ... autres champs du formulaire ... -->
 
-    <label for="login">Nom d'utilisateur:</label>
-    <input class="saisi" type="text" name="login" value="<?php echo set_value('login'); ?>">
+    <!-- Champ de confirmation -->
+    <label for="confirm">Confirmer la suppression du compte :</label>
+    <input type="checkbox" name="confirm" id="confirm" value="1">
 
-    <label for="password">Mot de passe:</label>
-    <input class="saisi" type="password" name="password">
+    <!-- Bouton de soumission -->
+    <input type="submit" value="Supprimer mon compte">
+</form>
 
-    <label for="nom">Nom:</label>
-    <input class="saisi" type="text" name="nom" value="<?php echo set_value('nom'); ?>">
 
-    <label for="prenom">Prénom:</label>
-    <input class="saisi" type="text" name="prenom" value="<?php echo set_value('prenom'); ?>">
+    <h2>Liste des Utilisateurs</h2>
 
-    <label for="ddn">Date de naissance:</label>
-    <input class="saisi" type="date" name="ddn" value="<?php echo set_value('ddn'); ?>">
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Nom d'utilisateur</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Date de Naissance</th>
+            <th>Email</th>
+            <th>Type d'Utilisateur</th>
+            <th>Action</th>
+        </tr>
 
-    <label for="email">Adresse e-mail:</label>
-    <input class="saisi" type="text" name="email" value="<?php echo set_value('email'); ?>">
-    <input type="submit" value="Enregistrer les modifications">
-    <?php echo form_close(); ?>
+        <?php
+        // Récupérez l'utilisateur connecté depuis la session
+        $connected_user = $this->User_model->get_user($this->session->userdata('user_id'));
+
+        // Vérifiez si l'utilisateur est connecté avant d'afficher les informations
+        if ($connected_user) :
+        ?>
+            <tr>
+                <td><?php echo $connected_user->id; ?></td>
+                <td><?php echo $connected_user->login; ?></td>
+                <td><?php echo $connected_user->nom; ?></td>
+                <td><?php echo $connected_user->prenom; ?></td>
+                <td><?php echo $connected_user->ddn; ?></td>
+                <td><?php echo $connected_user->email; ?></td>
+                <td><?php echo $connected_user->type_utilisateur; ?></td>
+                <td>
+                    <!---Suppression utilisateur-->
+                    <a href="<?php echo base_url('index.php/users/delete_account'); ?>"
+                        onclick="return confirm('Êtes-vous sûr de vouloir supprimer votre compte ?')">Supprimer</a>
+                </td>
+            </tr>
+        <?php endif; ?>
+    </table>
 </body>
 </html>
